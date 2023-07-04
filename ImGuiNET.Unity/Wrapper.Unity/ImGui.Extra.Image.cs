@@ -36,29 +36,29 @@ namespace ImGuiNET
 
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool ImageButton(Texture tex)
+        public static void ImageButton(Texture tex)
         {
-            return ImGui.ImageButton((IntPtr)GetTextureId(tex), new Vector2(tex.width, tex.height));
+            ImGui.ImageButton((IntPtr)GetTextureId(tex), new Vector2(tex.width, tex.height));
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool ImageButton(Texture tex, Vector2 size)
+        public static void ImageButton(Texture tex, Vector2 size)
         {
-            return ImGui.ImageButton((IntPtr)GetTextureId(tex), size);
+            ImGui.ImageButton((IntPtr)GetTextureId(tex), size);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool ImageButton(Sprite sprite)
+        public static void ImageButton(Sprite sprite)
         {
             SpriteInfo info = GetSpriteInfo(sprite);
-            return ImGui.ImageButton((IntPtr)GetTextureId(info.texture), info.size, info.uv0, info.uv1);
+            ImGui.ImageButton((IntPtr)GetTextureId(info.texture), info.size, info.uv0, info.uv1);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool ImageButton(Sprite sprite, Vector2 size)
+        public static void ImageButton(Sprite sprite, Vector2 size)
         {
             SpriteInfo info = GetSpriteInfo(sprite);
-            return ImGui.ImageButton((IntPtr)GetTextureId(info.texture), size, info.uv0, info.uv1);
+            ImGui.ImageButton((IntPtr)GetTextureId(info.texture), size, info.uv0, info.uv1);
         }
     }
 }

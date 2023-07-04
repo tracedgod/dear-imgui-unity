@@ -17,7 +17,7 @@
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment ImGuiPassFrag
-            #include "PassesUniversal.hlsl"
+            #include "Packages/com.realgames.dear-imgui/Resources/Shaders/PassesUniversal.hlsl"
 
             StructuredBuffer<ImVert> _Vertices;
             int _BaseVertex;
@@ -52,7 +52,7 @@
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment ImGuiPassFrag
-            #include "PassesBuiltin.hlsl"
+            #include "Packages/com.realgames.dear-imgui/Resources/Shaders/PassesBuiltin.hlsl"
 
             StructuredBuffer<ImVert> _Vertices;
             int _BaseVertex;

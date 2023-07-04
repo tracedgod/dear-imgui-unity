@@ -1,15 +1,13 @@
 using System;
+using System.Text;
 using UnityEngine;
 using Unity.Collections.LowLevel.Unsafe;
-using System.Text;
 
 namespace ImGuiNET
 {
     public unsafe partial struct ImFontGlyph
     {
-        public uint Colored;
-        public uint Visible;
-        public uint Codepoint;
+        public ushort Codepoint;
         public float AdvanceX;
         public float X0;
         public float Y0;
@@ -28,9 +26,7 @@ namespace ImGuiNET
         public static implicit operator ImFontGlyphPtr(ImFontGlyph* nativePtr) => new ImFontGlyphPtr(nativePtr);
         public static implicit operator ImFontGlyph* (ImFontGlyphPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImFontGlyphPtr(IntPtr nativePtr) => new ImFontGlyphPtr(nativePtr);
-        public ref uint Colored => ref UnsafeUtility.AsRef<uint>(&NativePtr->Colored);
-        public ref uint Visible => ref UnsafeUtility.AsRef<uint>(&NativePtr->Visible);
-        public ref uint Codepoint => ref UnsafeUtility.AsRef<uint>(&NativePtr->Codepoint);
+        public ref ushort Codepoint => ref UnsafeUtility.AsRef<ushort>(&NativePtr->Codepoint);
         public ref float AdvanceX => ref UnsafeUtility.AsRef<float>(&NativePtr->AdvanceX);
         public ref float X0 => ref UnsafeUtility.AsRef<float>(&NativePtr->X0);
         public ref float Y0 => ref UnsafeUtility.AsRef<float>(&NativePtr->Y0);
