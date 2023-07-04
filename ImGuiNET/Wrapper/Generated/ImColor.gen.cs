@@ -1,7 +1,7 @@
 using System;
+using System.Text;
 using UnityEngine;
 using Unity.Collections.LowLevel.Unsafe;
-using System.Text;
 
 namespace ImGuiNET
 {
@@ -20,29 +20,27 @@ namespace ImGuiNET
         public ref Vector4 Value => ref UnsafeUtility.AsRef<Vector4>(&NativePtr->Value);
         public void Destroy()
         {
-            ImGuiNative.ImColor_destroy((ImColor*)(NativePtr));
+            ImGuiNative.ImColor_destroy(NativePtr);
         }
         public ImColor HSV(float h, float s, float v)
         {
-            ImColor __retval;
             float a = 1.0f;
-            ImGuiNative.ImColor_HSV(&__retval, h, s, v, a);
-            return __retval;
+            ImColor ret = ImGuiNative.ImColor_HSV(NativePtr, h, s, v, a);
+            return ret;
         }
         public ImColor HSV(float h, float s, float v, float a)
         {
-            ImColor __retval;
-            ImGuiNative.ImColor_HSV(&__retval, h, s, v, a);
-            return __retval;
+            ImColor ret = ImGuiNative.ImColor_HSV(NativePtr, h, s, v, a);
+            return ret;
         }
         public void SetHSV(float h, float s, float v)
         {
             float a = 1.0f;
-            ImGuiNative.ImColor_SetHSV((ImColor*)(NativePtr), h, s, v, a);
+            ImGuiNative.ImColor_SetHSV(NativePtr, h, s, v, a);
         }
         public void SetHSV(float h, float s, float v, float a)
         {
-            ImGuiNative.ImColor_SetHSV((ImColor*)(NativePtr), h, s, v, a);
+            ImGuiNative.ImColor_SetHSV(NativePtr, h, s, v, a);
         }
     }
 }

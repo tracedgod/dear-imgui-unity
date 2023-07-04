@@ -37,7 +37,7 @@ namespace ImGuiNET.Unity
         // after assigning its function pointers to unmanaged code
         GetClipboardTextCallback _getClipboardText;
         SetClipboardTextCallback _setClipboardText;
-        ImeSetInputScreenPosCallback _setPlatformImeData;
+        ImeSetInputScreenPosCallback _imeSetInputScreenPos;
 #if IMGUI_FEATURE_CUSTOM_ASSERT
         LogAssertCallback _logAssert;
         DebugBreakCallback _debugBreak;
@@ -47,7 +47,7 @@ namespace ImGuiNET.Unity
         {
             io.SetClipboardTextFn = Marshal.GetFunctionPointerForDelegate(_setClipboardText);
             io.GetClipboardTextFn = Marshal.GetFunctionPointerForDelegate(_getClipboardText);
-            io.SetPlatformImeDataFn = Marshal.GetFunctionPointerForDelegate(_setPlatformImeData);
+            io.ImeSetInputScreenPosFn = Marshal.GetFunctionPointerForDelegate(_imeSetInputScreenPos);
 #if IMGUI_FEATURE_CUSTOM_ASSERT
             io.SetBackendPlatformUserData<CustomAssertData>(new CustomAssertData
             {
@@ -61,7 +61,7 @@ namespace ImGuiNET.Unity
         {
             io.SetClipboardTextFn = IntPtr.Zero;
             io.GetClipboardTextFn = IntPtr.Zero;
-            io.SetPlatformImeDataFn = IntPtr.Zero;
+            io.ImeSetInputScreenPosFn = IntPtr.Zero;
 #if IMGUI_FEATURE_CUSTOM_ASSERT
             io.SetBackendPlatformUserData<CustomAssertData>(null);
 #endif
@@ -88,7 +88,7 @@ namespace ImGuiNET.Unity
 
         public ImeSetInputScreenPosCallback ImeSetInputScreenPos
         {
-            set => _setPlatformImeData = (x, y) =>
+            set => _imeSetInputScreenPos = (x, y) =>
             {
                 try { value(x, y); }
                 catch (Exception ex) { Debug.LogException(ex); }
