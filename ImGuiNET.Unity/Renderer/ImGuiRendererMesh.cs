@@ -3,6 +3,7 @@ using UnityEngine.Rendering;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Profiling;
+using System.Collections.Generic;
 
 namespace ImGuiNET.Unity
 {
